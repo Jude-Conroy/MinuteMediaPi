@@ -1,0 +1,17 @@
+# Change default server ports
+server:
+  applicationConnectors:
+  - type: http
+    port: 9000
+  adminConnectors:
+  - type: http
+    port: 9001
+
+mongo:
+  seeds:
+  - host: higgsboson
+    port: 27017
+  database: piData
+  credentials:
+    userName: superuser
+    password: 12345678
