@@ -2,14 +2,14 @@
 server:
   applicationConnectors:
   - type: http
-    port: 9000
+    port: 8090
   adminConnectors:
   - type: http
-    port: 9001
+    port: 8091
 
 mongo:
   seeds:
-  - host: higgsboson
+  - host: localhost
     port: 27017
   database: piData
   credentials:

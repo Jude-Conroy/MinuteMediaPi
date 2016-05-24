@@ -6,8 +6,12 @@ import io.dropwizard.setup.Environment;
 
 import java.net.UnknownHostException;
 
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
+
 import com.meltmedia.dropwizard.mongo.MongoBundle;
+import com.minutemedia.pi.resources.DataUpload;
 import com.minutemedia.pi.resources.InsertData;
+import com.minutemedia.pi.resources.PostUpload;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
@@ -34,8 +38,7 @@ public class PiApplication extends Application<PiConfiguration> {
     }
 
     @Override
-    public void run(final PiConfiguration configuration,
-                    final Environment environment) throws UnknownHostException {
+    public void run(final PiConfiguration configuration, final Environment environment) throws UnknownHostException {
     	    	     	 
     	 MongoClient client = new MongoClient("localhost", 27017);
     	 DB db = client.getDB("piData");
@@ -43,7 +46,9 @@ public class PiApplication extends Application<PiConfiguration> {
     	 db = mongoBundle.getDB();
     	 
     	 environment.jersey().register(new InsertData(db));     
-    	  
+    	 environment.jersey().register(new DataUpload());   
+    	 environment.jersey().register(new PostUpload()); 
+    	 environment.jersey().register(MultiPartFeature.class); 
     }
 
 }

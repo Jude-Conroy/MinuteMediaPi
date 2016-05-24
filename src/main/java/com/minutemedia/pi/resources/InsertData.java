@@ -23,30 +23,31 @@ import com.mongodb.WriteResult;
 @Produces(MediaType.APPLICATION_JSON)
 public class InsertData {
 
-	private final AtomicLong counter;
-	private final DB db;
-
 	public InsertData(DB db) {
-		this.counter = new AtomicLong();
-		this.db = db;
+		new AtomicLong();
 	}
 
-	private static DBObject createDBObject(PiData user) {
+	private static DBObject createDBObject(PiData user) { 
+		
 		BasicDBObjectBuilder docBuilder = BasicDBObjectBuilder.start();
 
-		docBuilder.append("_id", user.getId());
-		docBuilder.append("venueid", user.getName());
-		docBuilder.append("start", user.getStart());
-		docBuilder.append("stop", user.getStop());
+		docBuilder.append("id", user.getId());
+		docBuilder.append("distance", user.getDistance());
+		docBuilder.append("mac_short", user.getMac_short());
+		docBuilder.append("mac", user.getMac());
+		docBuilder.append("venueid", user.getVenueid());
+		docBuilder.append("samples", user.getSamples());
+		docBuilder.append("captime", user.getCaptime());
+		
 		return docBuilder.get();
 	}
 
 	private static PiData createUser() {
 		PiData u = new PiData();
 		u.setId(2);
-		u.setName("Pankaj");
-		u.setStart((new Date()).toString());
-		u.setStop((new Date()).toString());
+		u.setDistance("Pankaj");
+		u.setMac("");
+		u.setVenueid("");
 		return u;
 	}
 
@@ -74,7 +75,7 @@ public class InsertData {
 		}
 
 		// update example
-		user.setName("Pankaj Kumar");
+		user.setVenueid("Pankaj Kumar");
 		doc = createDBObject(user);
 		result = col.update(query, doc);
 		System.out.println(result.getN());
