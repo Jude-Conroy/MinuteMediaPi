@@ -12,6 +12,7 @@ mongo:
   - host: localhost
     port: 27017
   database: piData
-  credentials:
-    userName: superuser
-    password: 12345678
+#   credentials:
+#    userName: superuser
+#    password: 12345678
+
