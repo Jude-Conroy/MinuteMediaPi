@@ -33,11 +33,19 @@ public class PiData {
 	public void setSamples(String samples) {
 		this.samples = samples;
 	}
+	
 	public String getCaptime() {
 		return captime;
 	}
 	public void setCaptime(String captime) {
 		this.captime = captime;
+	}
+	
+	public String getId() {
+		return captime;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String distance;
 	public String mac_short;
@@ -45,6 +53,7 @@ public class PiData {
 	public String venueid;
 	public String samples;
 	public String captime;
+	public int id;
 
 }
 
