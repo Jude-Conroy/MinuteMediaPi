@@ -45,7 +45,7 @@ mvn package will create the original-pi-0.0.1-SNAPSHOT.jar, this is now bitecode
 
 To run from the command line, navigate to the app root directory (level containing the piConfig.yml)
 
-    java -jar /original-pi-0.0.1-SNAPSHOT.jar server piConfig.yml
+    java -jar target/pi-0.0.1-SNAPSHOT.jar server piConfig.yml
    
 You now have a running web server waiting for submits.
 
